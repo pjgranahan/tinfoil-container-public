@@ -17,7 +17,7 @@ volumes:
 
 containers:
   - name: "app"
-    image: "ghcr.io/pjgranahan/app-public@sha256:96b0ec1db6b63cfd31ad13ac6bdb9289ef245f50a1748765372bcd2b88ec331d"
+    image: "ghcr.io/pjgranahan/app-public@sha256:93795d80c8a91ce399815652bef54253d2063cbf98dedc20514d651177aa4514"
     networks: [egress]
     volumes: [state:/data]
     env:
@@ -26,6 +26,7 @@ containers:
     secrets:
       - TINFOIL_API_KEY
       - JOB_API_TOKEN
+      - DASHBOARD_PASSWORD_HASH
     tmpfs:
       /tmp: "size=1g,uid=10001,gid=10001,mode=1777"
     stop_signal: SIGTERM
@@ -36,5 +37,7 @@ shim:
   upstream-port: 8080
   paths:
     - /healthz
-    - /v1/jobs/*
     - /v1/volume/unlock
+    - /login
+    - /auth/*
+    - /api/*
