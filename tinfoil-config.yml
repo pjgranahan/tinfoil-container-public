@@ -17,7 +17,7 @@ volumes:
 
 containers:
   - name: "app"
-    image: "ghcr.io/pjgranahan/app-public@sha256:ac9e7de0f4de5f2d72bed20d9cb61a8bd5b27a47bb77583334ceb22605ee9e5b"
+    image: "ghcr.io/pjgranahan/app-public@sha256:a5fa127569ef361ca6c758c2fe491244e85b1e69cec019cccb0e0a57a7e2a792"
     networks: [egress]
     volumes: [state:/data]
     env:
